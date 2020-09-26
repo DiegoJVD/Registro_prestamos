@@ -1,0 +1,82 @@
+<Window x:Class="Registro_prestamos.UI.Registro.rPrestamo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Registro_prestamos.UI.Registro"
+        mc:Ignorable="d"
+        Title="Registro de Prestamo" Height="380" Width="390">
+    <Grid>
+        <StackPanel Margin="10,0,0,0">
+            <!--Prestamo id-->
+            <StackPanel Orientation="Horizontal" Margin="25,10,0,0">
+                <Label Content="ID"/>
+                <TextBox x:Name="IdTextBox" Margin="74,0,0,0" Width="60"  Height="27" Text="{Binding PrestamoId}"/>
+                <Button x:Name="BuscarButton"  Margin="10,0,0,0" Width="80" Height="27" Click="BuscarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Imagenes\buscar.png" Height="20"/>
+                        <Label Content = "buscar"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <!--Prestamo Fecha-->
+            <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                <Label Content="Fecha"/>
+                <DatePicker Name="FechaDateTimePicker" Height="29" HorizontalAlignment="Left" Margin="70,0,0,0"  VerticalAlignment="Top" Width="150" Text=" {Binding Fecha} " />
+            </StackPanel>
+
+            <!--Prestamo (Persona id)-->
+            <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                <Label Content="Persona Id"/>
+                <TextBox x:Name="PersonaIdTextBox" Margin="46,0,0,0" Width="150"  Height="29" Text="{Binding PersonaId}"/>
+            </StackPanel>
+
+            <!--Prestamo concepto-->
+            <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                <Label Content="Concepto"/>
+                <TextBox x:Name="ConceptoTextBox" Margin="50,0,0,0" Width="150"  Height="29" Text="{Binding Concepto}"/>
+            </StackPanel>
+
+            <!--Prestamo Monto-->
+            <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                <Label Content="Monto"/>
+                <TextBox x:Name="MontoTextBox" Margin="64,0,0,0" Width="150"  Height="29" Text="{Binding Monto}"/>
+            </StackPanel>
+
+            <!--Prestamo Balance-->
+            <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                <Label Content="Balance"/>
+                <TextBox x:Name="BalanceTextBox" Margin="60,0,0,0" IsReadOnly= "true" Width="150"  Height="29" Text="{Binding Balance}"/>
+            </StackPanel>
+
+             <!--botones Nuevo, guardar y eliminar -->
+            <StackPanel Orientation = "Horizontal" Margin= "10,10,0,0">
+                <!--Nuevo-->
+                <Button x:Name="NuevoButton"  Margin="10,0,0,0" Width="80" Height="27" Click="NuevoButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="C:\Users\Diego Valerio\Source\Repos\RegistroCompleto\Resources\nuevo.png" Height="20"/>
+                        <Label Content = "Nuevo"/>
+                    </StackPanel>
+                </Button>
+
+                <!--Guardar-->
+                <Button x:Name="GuardarButton"  Margin="10,0,0,0" Width="80" Height="27"  Click="GuardarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="C:\Users\Diego Valerio\Source\Repos\RegistroCompleto\Resources\guardar.png" Height="20"/>
+                        <Label Content = "Guardar"/>
+                    </StackPanel>
+                </Button>
+
+                <!--Eliminar-->
+                <Button x:Name="EliminarButton"  Margin="10,0,0,0" Width="80" Height="27" Click="EliminarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="C:\Users\Diego Valerio\Source\Repos\RegistroCompleto\Resources\eliminar.png" Height="20"/>
+                        <Label Content = "Eliminar"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            
+        </StackPanel>
+    </Grid>
+</Window>
