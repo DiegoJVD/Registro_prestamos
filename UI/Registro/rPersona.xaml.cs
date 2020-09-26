@@ -4,6 +4,7 @@ using Registro_prestamos.DAL;
 using Registro_prestamos.Entidades;
 using Registro_prestamos.BLL;
 using Registro_prestamos.UI;
+using Microsoft.EntityFrameworkCore;
 
 namespace Registro_prestamos.UI.Registro
 {
@@ -18,20 +19,19 @@ namespace Registro_prestamos.UI.Registro
         {
             InitializeComponent();
             persona = new Persona();
-            this.DataContext = persona;
         }
 
         public void GuardarButton_Click(object render, RoutedEventArgs e)
         {
             if(!Validar())
                 return;
-            var paso = PersonaBLL.Guardar(this.persona);
+            var paso = PersonaBLL.Guardar(persona);
             if(paso){
                 Limpiar();
-                MessageBox.Show("Guardado con Exito", "Exito!!",MessageBoxButton.OK);
+                MessageBox.Show("Guardado con Exito");
             }
             else
-            MessageBox.Show("Error al guardar", "Error",MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Error al guardar");
         }
 
         public void Limpiar(){
@@ -51,7 +51,7 @@ namespace Registro_prestamos.UI.Registro
             this.persona = found;
             else{
             this.persona = new Persona();
-            MessageBox.Show("No encontrado", "Error",MessageBoxButton.OK);
+            MessageBox.Show("No encontrado");
             }
             
 
@@ -59,15 +59,15 @@ namespace Registro_prestamos.UI.Registro
         }
 
         private bool Validar(){
-            bool esValido = true;
-            if(IdTextBox.Text.Length == 0 && NombreTextBox.Text.Length == 0 && BalanceTextBox.Text.Length == 0)
+            bool Valido = true;
+            if(IdTextBox.Text.Length == 0 && NombreTextBox.Text.Length == 0 )
             {
-                esValido = false;
-                MessageBox.Show("Error, Intentelo de nuevo", "Error",MessageBoxButton.OKCancel);
+                Valido = false;
+                MessageBox.Show("Error");
 
                 
             }
-            return esValido;
+            return Valido;
         }
 
         private void NuevoButton_Click(object render, RoutedEventArgs e){
@@ -77,10 +77,10 @@ namespace Registro_prestamos.UI.Registro
         private void EliminarButton_Click(object render, RoutedEventArgs e){
             if(PersonaBLL.Eliminar(Convert.ToInt32(IdTextBox.Text))){
                 Limpiar();
-                MessageBox.Show("Eliminado", "Exito",MessageBoxButton.OK);
+                MessageBox.Show("Eliminado");
             }
             else
-            MessageBox.Show("Error al eliminar", "Error",MessageBoxButton.OK);
+            MessageBox.Show("Error ");
             
         }
         

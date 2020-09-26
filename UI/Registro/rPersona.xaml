@@ -11,7 +11,7 @@
             <!--Persona id-->
             <StackPanel Orientation="Horizontal" Margin="25,10,0,0">
                 <Label Content="ID"/>
-                <TextBox x:Name="IdTextBox" Margin="74,0,0,0" Width="60"  Height="27" Text="{Binding PersonaId}"/>
+                <TextBox x:Name="IdTextBox" Margin="74,0,0,0" Width="60"  Height="27" Text="{Binding Id}"/>
                 <Button x:Name="BuscarButton"  Margin="10,0,0,0" Width="80" Height="27" Click="BuscarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="Imagenes\buscar.png" Height="20"/>
