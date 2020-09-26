@@ -19,6 +19,7 @@ namespace Registro_prestamos.UI.Registro
         {
             InitializeComponent();
             persona = new Persona();
+            this.DataContext = this.persona;
         }
 
         public void GuardarButton_Click(object render, RoutedEventArgs e)

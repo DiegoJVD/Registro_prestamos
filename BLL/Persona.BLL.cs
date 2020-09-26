@@ -35,11 +35,6 @@ namespace Registro_prestamos.BLL
 
             try
             {
-
-                int[] a ={1};
-
-                a[3]=1;
-
                 contexto.Persona.Add(persona);
                 paso = contexto.SaveChanges() > 0;
             }

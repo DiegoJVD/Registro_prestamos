@@ -20,7 +20,7 @@ namespace Registro_prestamos.UI.Registro
             InitializeComponent();
             prestamo = new Prestamo();
             persona = new Persona();
-            this.DataContext = prestamo;
+            this.DataContext = this.prestamo;
         }
 
         public void GuardarButton_Click(object render, RoutedEventArgs e)
@@ -30,8 +30,8 @@ namespace Registro_prestamos.UI.Registro
             var person = PersonaBLL.Buscar(Convert.ToInt32(PersonaIdTextBox.Text));
             if (person != null)
             {
-                person.Balance = person.Balance + Convert.ToDecimal(MontoTextBox.Text);
-                BalanceTextBox.Text =  MontoTextBox.Text;
+                persona.Balance =  person.Balance + Convert.ToDecimal(MontoTextBox.Text);
+                prestamo.Balance =  Convert.ToDecimal(MontoTextBox.Text);
 
                 var paso = PrestamoBLL.Guardar(prestamo);
                 if (paso)
@@ -72,20 +72,10 @@ namespace Registro_prestamos.UI.Registro
             this.DataContext = this.prestamo;
         }
 
-        private void BuscarPersona(object render, RoutedEventArgs e)
-        {
-            var found = PersonaBLL.Buscar(Convert.ToInt32(PersonaIdTextBox.Text));
-
-            if (found != null)
-            {
-                BalanceTextBox.Text = Convert.ToString(persona.Balance);
-            }
-        }
-
         private bool Validar()
         {
             bool esValido = true;
-            if (IdTextBox.Text.Length == 0 && PersonaIdTextBox.Text.Length == 0 && BalanceTextBox.Text.Length == 0 && MontoTextBox.Text.Length == 0)
+            if (IdTextBox.Text.Length == 0 && PersonaIdTextBox.Text.Length == 0 )
             {
                 esValido = false;
                 MessageBox.Show("Error, Intentelo de nuevo", "Error", MessageBoxButton.OKCancel);
@@ -105,10 +95,10 @@ namespace Registro_prestamos.UI.Registro
             if (PrestamoBLL.Eliminar(Convert.ToInt32(IdTextBox.Text)))
             {
                 Limpiar();
-                MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK);
+                MessageBox.Show("Eliminado");
             }
             else
-                MessageBox.Show("Error al eliminar", "Error", MessageBoxButton.OK);
+                MessageBox.Show("Error ");
 
         }
 
