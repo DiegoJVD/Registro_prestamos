@@ -1,0 +1,42 @@
+<Window x:Class="Registro_prestamos.UI.Consulta.cPrestamo" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Registro_prestamos.UI.Consulta" mc:Ignorable="d" Title="Consulta Prestamos"
+ Height="460" Width="570">
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="10,5,10,0">
+
+            <StackPanel Orientation="Horizontal" Height="58">
+                <StackPanel Margin="5,0">
+                    <Label Content="Filtro:"/>
+                    <ComboBox x:Name="FiltroComboBox" Width="100">
+                        <ComboBoxItem Content="Prestamo Id"/>
+                        <ComboBoxItem Content="Persona Id"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Margin="5,0">
+                    <Label Content="Critero:"/>
+                    <TextBox x:Name="CriterioTextBox" Width="100"/>
+                </StackPanel>
+                <Button x:Name="BuscarButton" Height="34" Width="93" Click="BuscarButton_Click" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Imagenes/Buscar.png"/>
+                        <Label Content="Buscar"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Left">
+            
+                <DataGrid x:Name="DatosDataGrid" Height="350" Width="527" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Prestamo Id" Binding="{Binding PrestamoId}"/>
+                        <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha}"/>
+                        <DataGridTextColumn Header="Persona Id" Binding="{Binding PersonaId}"/>
+                        <DataGridTextColumn Header="Concepto" Binding="{Binding Concepto}"/>
+                        <DataGridTextColumn Header="Monto" Binding="{Binding Monto}"/>
+                        <DataGridTextColumn Header="Balance" Binding="{Binding Balance}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

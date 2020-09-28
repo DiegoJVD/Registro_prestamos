@@ -28,15 +28,20 @@ namespace Registro_prestamos.BLL
         /// Permite insertar una entidad en la base de datos
         /// </summary>
         /// <param name="Prestamo">La entidad que se desea guardar</param>
-        private static bool Insertar(Prestamo prestamo)
+        private static bool Insertar(Prestamo prestamos)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
 
             try
             {
+                Persona person = new Persona();
+                person = PersonaBLL.Buscar(prestamos.PersonaId);
+                prestamos.Balance = prestamos.monto;
+                person.Balance += prestamos.Balance;
+                PersonaBLL.Guardar(person);
 
-                contexto.Prestamo.Add(prestamo);
+                contexto.Prestamo.Add(prestamos);
                 paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -58,10 +63,18 @@ namespace Registro_prestamos.BLL
         public static bool Modificar(Prestamo prestamo)
         {
             bool paso = false;
+            decimal balanceAntes;
             Contexto contexto = new Contexto();
 
             try
             {
+                Persona persona = new Persona();
+                persona = PersonaBLL.Buscar(prestamo.PersonaId);
+                balanceAntes = prestamo.Balance;
+                prestamo.Balance += prestamo.monto;
+                persona.Balance -= balanceAntes;
+                persona.Balance += prestamo.Balance;
+                PersonaBLL.Guardar(persona);
                 //marcar la entidad como modificada para que el contexto sepa como proceder
                 contexto.Entry(prestamo).State = EntityState.Modified;
                 paso = contexto.SaveChanges() > 0;
@@ -87,6 +100,12 @@ namespace Registro_prestamos.BLL
             Contexto contexto = new Contexto();
             try
             {
+                var pres = contexto.Prestamo.Find(id);
+                Persona persona = new Persona();
+                persona = PersonaBLL.Buscar(pres.PersonaId);
+                persona.Balance -= pres.Balance;
+                PersonaBLL.Guardar(persona);
+
                 //buscar la entidad que se desea eliminar
                 var prestamo = contexto.Prestamo.Find(id);
 

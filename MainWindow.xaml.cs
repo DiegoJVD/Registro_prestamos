@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Registro_prestamos.UI.Registro;
+using Registro_prestamos.UI.Consulta;
 
 namespace Registro_prestamos
 {
@@ -36,6 +37,18 @@ namespace Registro_prestamos
         {
             rPrestamo registroPrestamo = new rPrestamo();
             registroPrestamo.Show();
+        }
+
+         public void cPrestamoMenuItem_CLick(object render, RoutedEventArgs e)
+        {
+            cPrestamo ConsultaPrestamo = new cPrestamo();
+            ConsultaPrestamo.Show();
+        }
+
+        public void cPersonaMenuItem_CLick(object render, RoutedEventArgs e)
+        {
+            cPersona ConsultaPersona = new cPersona();
+            ConsultaPersona.Show();
         }
     }
 }

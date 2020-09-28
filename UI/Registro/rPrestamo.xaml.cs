@@ -27,22 +27,17 @@ namespace Registro_prestamos.UI.Registro
         {
             if (!Validar())
                 return;
-            var person = PersonaBLL.Buscar(Convert.ToInt32(PersonaIdTextBox.Text));
-            if (person != null)
-            {
-                persona.Balance =  person.Balance + Convert.ToDecimal(MontoTextBox.Text);
-                prestamo.Balance =  Convert.ToDecimal(MontoTextBox.Text);
+                
 
                 var paso = PrestamoBLL.Guardar(prestamo);
                 if (paso)
                 {
                     Limpiar();
-                    MessageBox.Show("Guardado con Exito", "Exito!!", MessageBoxButton.OK);
+                    MessageBox.Show("Guardado con Exito"," ",MessageBoxButton.OK);
                 }
                 else
-                    MessageBox.Show("Error al guardar", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Error al guardar", "", MessageBoxButton.OK);
 
-            }
 
         }
 
@@ -65,7 +60,7 @@ namespace Registro_prestamos.UI.Registro
             else
             {
                 this.prestamo = new Prestamo();
-                MessageBox.Show("No encontrado", "Error", MessageBoxButton.OK);
+                MessageBox.Show("No encontrado, por favor confirme que sea un id valido e intente de nuevo ","", MessageBoxButton.OK);
             }
 
 
@@ -74,15 +69,26 @@ namespace Registro_prestamos.UI.Registro
 
         private bool Validar()
         {
-            bool esValido = true;
-            if (IdTextBox.Text.Length == 0 && PersonaIdTextBox.Text.Length == 0 )
+            bool Valido = true;
+            if (FechaDateTimePicker.Text.Length == 0)
             {
-                esValido = false;
-                MessageBox.Show("Error, Intentelo de nuevo", "Error", MessageBoxButton.OKCancel);
-
+                Valido = false;
+                MessageBox.Show("Introduzca una fecha e intente de nuevo", "Error al guardad", MessageBoxButton.OK);
+            }
+            if (PersonaIdTextBox.Text.Length == 0)
+            {
+                Valido = false;
+                MessageBox.Show("Introduzca un id de persona e intente de nuevo ", "error al guardar", MessageBoxButton.OK);
+            }
+            else if (MontoTextBox.Text.Length == 0){
+                Valido = false;
+                MessageBox.Show("Introduzca un monto e intente de nuevo ", "error al guardar", MessageBoxButton.OK);
+            }
+            {
 
             }
-            return esValido;
+
+            return Valido;
         }
 
         private void NuevoButton_Click(object render, RoutedEventArgs e)

@@ -13,7 +13,7 @@ namespace Registro_prestamos.UI.Registro
     /// </summary>
     public partial class rPersona : Window
     {
-        
+
         private Persona persona;
         public rPersona()
         {
@@ -24,18 +24,20 @@ namespace Registro_prestamos.UI.Registro
 
         public void GuardarButton_Click(object render, RoutedEventArgs e)
         {
-            if(!Validar())
+            if (!Validar())
                 return;
             var paso = PersonaBLL.Guardar(persona);
-            if(paso){
+            if (paso)
+            {
                 Limpiar();
-                MessageBox.Show("Guardado con Exito");
+                MessageBox.Show("Guardado con Exito","", MessageBoxButton.OK);
             }
             else
-            MessageBox.Show("Error al guardar");
+                MessageBox.Show("Error al guardar", "", MessageBoxButton.OK);
         }
 
-        public void Limpiar(){
+        public void Limpiar()
+        {
             this.persona = new Persona();
             this.DataContext = persona;
         }
@@ -48,43 +50,53 @@ namespace Registro_prestamos.UI.Registro
             var found = PersonaBLL.Buscar(Convert.ToInt32(IdTextBox.Text));
 
 
-            if(found != null)
-            this.persona = found;
-            else{
-            this.persona = new Persona();
-            MessageBox.Show("No encontrado");
+            if (found != null)
+                this.persona = found;
+            else
+            {
+                this.persona = new Persona();
+                MessageBox.Show("No encontrado, por favor confirme que sea un id valido e intente de nuevo ","", MessageBoxButton.OK);
             }
-            
+
 
             this.DataContext = this.persona;
         }
 
-        private bool Validar(){
+        private bool Validar()
+        {
             bool Valido = true;
-            if(IdTextBox.Text.Length == 0 && NombreTextBox.Text.Length == 0 )
+            if (IdTextBox.Text.Length == 0 )
             {
                 Valido = false;
-                MessageBox.Show("Error");
-
-                
+                MessageBox.Show("Introduzca un id e intente de nuevo", "Error al guardad", MessageBoxButton.OK);
             }
+            if (NombreTextBox.Text.Length == 0)
+            {
+                Valido = false;
+                MessageBox.Show("Introduzca un nombre e intente de nuevo", "Error al guardad", MessageBoxButton.OK);
+            }
+
+            
             return Valido;
         }
 
-        private void NuevoButton_Click(object render, RoutedEventArgs e){
+        private void NuevoButton_Click(object render, RoutedEventArgs e)
+        {
             Limpiar();
         }
 
-        private void EliminarButton_Click(object render, RoutedEventArgs e){
-            if(PersonaBLL.Eliminar(Convert.ToInt32(IdTextBox.Text))){
+        private void EliminarButton_Click(object render, RoutedEventArgs e)
+        {
+            if (PersonaBLL.Eliminar(Convert.ToInt32(IdTextBox.Text)))
+            {
                 Limpiar();
                 MessageBox.Show("Eliminado");
             }
             else
-            MessageBox.Show("Error ");
-            
+                MessageBox.Show("Error ");
+
         }
-        
+
 
     }
 }

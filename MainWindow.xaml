@@ -15,6 +15,10 @@
                     <MenuItem x:Name = "rpersonaMenuItem" Header="Registrar Persona"  Click="rPersonaMenuItem_CLick"/>
                     <MenuItem x:Name = "rPrestamoMenuItem" Header="Registrar Prestamo" Click="rPrestamoMenuItem_CLick"/>
                 </MenuItem>
+                <MenuItem Header="Consultar">
+                    <MenuItem x:Name = "cpersonaMenuItem" Header="Consular Persona"  Click="cPersonaMenuItem_CLick"/>
+                    <MenuItem x:Name = "cPrestamoMenuItem" Header="Consular Prestamo" Click="cPrestamoMenuItem_CLick"/>
+                </MenuItem>
             </Menu>
         </StackPanel>
     </Grid>

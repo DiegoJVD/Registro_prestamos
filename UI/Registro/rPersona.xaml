@@ -11,10 +11,10 @@
             <!--Persona id-->
             <StackPanel Orientation="Horizontal" Margin="25,10,0,0">
                 <Label Content="ID"/>
-                <TextBox x:Name="IdTextBox" Margin="74,0,0,0" Width="60"  Height="27" Text="{Binding Id}"/>
+                <TextBox x:Name="IdTextBox" Margin="74,0,0,0" Width="60"  Height="27" Text="{Binding PersonaId}"/>
                 <Button x:Name="BuscarButton"  Margin="10,0,0,0" Width="80" Height="27" Click="BuscarButton_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="Imagenes\buscar.png" Height="20"/>
+                        <Image Source="/Imagenes/Buscar.png" Height="20"/>
                         <Label Content = "buscar"/>
                     </StackPanel>
                 </Button>
@@ -37,7 +37,7 @@
                 <!--Nuevo-->
                 <Button x:Name="NuevoButton"  Margin="10,0,0,0" Width="80" Height="27" Click="NuevoButton_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="C:\Users\Diego Valerio\Source\Repos\RegistroCompleto\Resources\nuevo.png" Height="20"/>
+                        <Image Source="/Imagenes/nuevo.png" Height="20"/>
                         <Label Content = "Nuevo"/>
                     </StackPanel>
                 </Button>
@@ -45,7 +45,7 @@
                 <!--Guardar-->
                 <Button x:Name="GuardarButton"  Margin="10,0,0,0" Width="80" Height="27"  Click="GuardarButton_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="C:\Users\Diego Valerio\Source\Repos\RegistroCompleto\Resources\guardar.png" Height="20"/>
+                        <Image Source="/Imagenes/guardar.png" Height="20"/>
                         <Label Content = "Guardar"/>
                     </StackPanel>
                 </Button>
@@ -53,7 +53,7 @@
                 <!--Eliminar-->
                 <Button x:Name="EliminarButton"  Margin="10,0,0,0" Width="80" Height="27" Click="EliminarButton_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="C:\Users\Diego Valerio\Source\Repos\RegistroCompleto\Resources\eliminar.png" Height="20"/>
+                        <Image Source="/Imagenes/eliminar.png" Height="20"/>
                         <Label Content = "Eliminar"/>
                     </StackPanel>
                 </Button>
