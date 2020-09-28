@@ -1,5 +1,3 @@
-bin/*.*
-bin/Debug/*.*
+bin/
 
-obj/*.*
-obj/Debug/*.*
+obj/
