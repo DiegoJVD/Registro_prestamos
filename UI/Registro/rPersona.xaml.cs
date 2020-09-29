@@ -24,8 +24,10 @@ namespace Registro_prestamos.UI.Registro
 
         public void GuardarButton_Click(object render, RoutedEventArgs e)
         {
-            if (!Validar())
+            if (!Validar()){
                 return;
+            }
+                
             var paso = PersonaBLL.Guardar(persona);
             if (paso)
             {

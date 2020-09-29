@@ -71,7 +71,7 @@ namespace Registro_prestamos.BLL
                 Persona persona = new Persona();
                 persona = PersonaBLL.Buscar(prestamo.PersonaId);
                 balanceAntes = prestamo.Balance;
-                prestamo.Balance += prestamo.monto;
+                prestamo.Balance = prestamo.monto;
                 persona.Balance -= balanceAntes;
                 persona.Balance += prestamo.Balance;
                 PersonaBLL.Guardar(persona);
