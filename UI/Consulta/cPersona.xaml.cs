@@ -23,7 +23,7 @@ namespace Registro_prestamos.UI.Consulta
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
             
-             var listado = new List<Persona>();
+             var listado = new List<Personas>();
 
             if (CriterioTextBox.Text.Trim().Length > 0)
             {

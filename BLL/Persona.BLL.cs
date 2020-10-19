@@ -16,7 +16,7 @@ namespace Registro_prestamos.BLL
         /// Permite insertar o modificar una entidad en la base de datos
         /// </summary>
         /// <param name="persona">La entidad que se desea guardar</param> 
-        public static bool Guardar(Persona persona)
+        public static bool Guardar(Personas persona)
         {
             if (!Existe(persona.PersonaId))//si no existe insertamos
                 return Insertar(persona);
@@ -27,15 +27,15 @@ namespace Registro_prestamos.BLL
         /// <summary>
         /// Permite insertar una entidad en la base de datos
         /// </summary>
-        /// <param name="Persona">La entidad que se desea guardar</param>
-        private static bool Insertar(Persona persona)
+        /// <param name="Personas">La entidad que se desea guardar</param>
+        private static bool Insertar(Personas persona)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
 
             try
             {
-                contexto.Persona.Add(persona);
+                contexto.Personas.Add(persona);
                 paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -54,7 +54,7 @@ namespace Registro_prestamos.BLL
         /// Permite modificar una entidad en la base de datos
         /// </summary>
         /// <param name="persona">La entidad que se desea modificar</param> 
-        public static bool Modificar(Persona persona)
+        public static bool Modificar(Personas persona)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
@@ -87,11 +87,11 @@ namespace Registro_prestamos.BLL
             try
             {
                 //buscar la entidad que se desea eliminar
-                var persona = contexto.Persona.Find(id);
+                var persona = contexto.Personas.Find(id);
 
                 if (persona != null)
                 {
-                    contexto.Persona.Remove(persona);//remover la entidad
+                    contexto.Personas.Remove(persona);//remover la entidad
                     paso = contexto.SaveChanges() > 0;
                 }
             }
@@ -111,14 +111,14 @@ namespace Registro_prestamos.BLL
         /// Permite buscar una entidad en la base de datos
         /// </summary>
         /// <param name="id">El Id de la entidad que se desea buscar</param> 
-        public static Persona Buscar(int id)
+        public static Personas Buscar(int id)
         {
             Contexto contexto = new Contexto();
-            Persona persona;
+            Personas persona;
 
             try
             {
-                persona = contexto.Persona.Find(id);
+                persona = contexto.Personas.Find(id);
             }
             catch (Exception)
             {
@@ -137,14 +137,14 @@ namespace Registro_prestamos.BLL
         /// </summary>
         /// <param name="criterio">La expresión que define el criterio de busqueda</param>
         /// <returns></returns>
-        public static List<Persona> GetList(Expression<Func<Persona, bool>> criterio)
+        public static List<Personas> GetList(Expression<Func<Personas, bool>> criterio)
         {
-            List<Persona> lista = new List<Persona>();
+            List<Personas> lista = new List<Personas>();
             Contexto contexto = new Contexto();
             try
             {
                 //obtener la lista y filtrarla según el criterio recibido por parametro.
-                lista = contexto.Persona.Where(criterio).AsNoTracking().ToList();
+                lista = contexto.Personas.Where(criterio).AsNoTracking().ToList();
             }
             catch (Exception)
             {
@@ -164,7 +164,7 @@ namespace Registro_prestamos.BLL
 
             try
             {
-                encontrado = contexto.Persona
+                encontrado = contexto.Personas
                     .Any(e => e.PersonaId == id);
             }
             catch (Exception)
@@ -179,13 +179,13 @@ namespace Registro_prestamos.BLL
             return encontrado;
         }
 
-        public static List<Persona> GetPersona()
+        public static List<Personas> GetPersona()
         {
-            List<Persona> lista = new List<Persona>();
+            List<Personas> lista = new List<Personas>();
             Contexto contexto = new Contexto();
             try
             {
-                lista = contexto.Persona.ToList();
+                lista = contexto.Personas.ToList();
             }
             catch (Exception)
             {

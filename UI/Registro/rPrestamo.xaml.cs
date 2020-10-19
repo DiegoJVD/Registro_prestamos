@@ -13,13 +13,13 @@ namespace Registro_prestamos.UI.Registro
     public partial class rPrestamo : Window
     {
 
-        private Prestamo prestamo;
-        private Persona persona;
+        private Prestamos prestamo;
+        private Personas persona;
         public rPrestamo()
         {
             InitializeComponent();
-            prestamo = new Prestamo();
-            persona = new Persona();
+            prestamo = new Prestamos();
+            persona = new Personas();
             this.DataContext = this.prestamo;
         }
 
@@ -43,7 +43,7 @@ namespace Registro_prestamos.UI.Registro
 
         public void Limpiar()
         {
-            this.prestamo = new Prestamo();
+            this.prestamo = new Prestamos();
             this.DataContext = prestamo;
         }
 
@@ -59,7 +59,7 @@ namespace Registro_prestamos.UI.Registro
                 this.prestamo = found;
             else
             {
-                this.prestamo = new Prestamo();
+                this.prestamo = new Prestamos();
                 MessageBox.Show("No encontrado, por favor confirme que sea un id valido e intente de nuevo ","", MessageBoxButton.OK);
             }
 

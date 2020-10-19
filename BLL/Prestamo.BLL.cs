@@ -16,7 +16,7 @@ namespace Registro_prestamos.BLL
         /// Permite insertar o modificar una entidad en la base de datos
         /// </summary>
         /// <param name="prestamo">La entidad que se desea guardar</param> 
-        public static bool Guardar(Prestamo prestamo)
+        public static bool Guardar(Prestamos prestamo)
         {
             if (!Existe(prestamo.PrestamoId))//si no existe insertamos
                 return Insertar(prestamo);
@@ -28,20 +28,20 @@ namespace Registro_prestamos.BLL
         /// Permite insertar una entidad en la base de datos
         /// </summary>
         /// <param name="Prestamo">La entidad que se desea guardar</param>
-        private static bool Insertar(Prestamo prestamos)
+        private static bool Insertar(Prestamos prestamos)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
 
             try
             {
-                Persona person = new Persona();
+                Personas person = new Personas();
                 person = PersonaBLL.Buscar(prestamos.PersonaId);
                 prestamos.Balance = prestamos.monto;
                 person.Balance += prestamos.Balance;
                 PersonaBLL.Guardar(person);
 
-                contexto.Prestamo.Add(prestamos);
+                contexto.Prestamos.Add(prestamos);
                 paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
@@ -59,8 +59,8 @@ namespace Registro_prestamos.BLL
         /// <summary>
         /// Permite modificar una entidad en la base de datos
         /// </summary>
-        /// <param name="prestamo">La entidad que se desea modificar</param> 
-        public static bool Modificar(Prestamo prestamo)
+        /// <param name="prestamos">La entidad que se desea modificar</param> 
+        public static bool Modificar(Prestamos prestamo)
         {
             bool paso = false;
             decimal balanceAntes;
@@ -68,7 +68,7 @@ namespace Registro_prestamos.BLL
 
             try
             {
-                Persona persona = new Persona();
+                Personas persona = new Personas();
                 persona = PersonaBLL.Buscar(prestamo.PersonaId);
                 balanceAntes = prestamo.Balance;
                 prestamo.Balance = prestamo.monto;
@@ -100,18 +100,18 @@ namespace Registro_prestamos.BLL
             Contexto contexto = new Contexto();
             try
             {
-                var pres = contexto.Prestamo.Find(id);
-                Persona persona = new Persona();
+                var pres = contexto.Prestamos.Find(id);
+                Personas persona = new Personas();
                 persona = PersonaBLL.Buscar(pres.PersonaId);
                 persona.Balance -= pres.Balance;
                 PersonaBLL.Guardar(persona);
 
                 //buscar la entidad que se desea eliminar
-                var prestamo = contexto.Prestamo.Find(id);
+                var prestamo = contexto.Prestamos.Find(id);
 
                 if (prestamo != null)
                 {
-                    contexto.Prestamo.Remove(prestamo);//remover la entidad
+                    contexto.Prestamos.Remove(prestamo);//remover la entidad
                     paso = contexto.SaveChanges() > 0;
                 }
             }
@@ -131,14 +131,14 @@ namespace Registro_prestamos.BLL
         /// Permite buscar una entidad en la base de datos
         /// </summary>
         /// <param name="id">El Id de la entidad que se desea buscar</param> 
-        public static Prestamo Buscar(int id)
+        public static Prestamos Buscar(int id)
         {
             Contexto contexto = new Contexto();
-            Prestamo prestamo;
+            Prestamos prestamo;
 
             try
             {
-                prestamo = contexto.Prestamo.Find(id);
+                prestamo = contexto.Prestamos.Find(id);
             }
             catch (Exception)
             {
@@ -157,14 +157,13 @@ namespace Registro_prestamos.BLL
         /// </summary>
         /// <param name="criterio">La expresión que define el criterio de busqueda</param>
         /// <returns></returns>
-        public static List<Prestamo> GetList(Expression<Func<Prestamo, bool>> criterio)
+        public static List<Prestamos> GetList(Expression<Func<Prestamos, bool>> criterio)
         {
-            List<Prestamo> lista = new List<Prestamo>();
+            List<Prestamos> lista = new List<Prestamos>();
             Contexto contexto = new Contexto();
             try
             {
-                //obtener la lista y filtrarla según el criterio recibido por parametro.
-                lista = contexto.Prestamo.Where(criterio).AsNoTracking().ToList();
+                lista = contexto.Prestamos.Where(criterio).AsNoTracking().ToList();
             }
             catch (Exception)
             {
@@ -184,8 +183,7 @@ namespace Registro_prestamos.BLL
 
             try
             {
-                encontrado = contexto.Prestamo
-                    .Any(e => e.PrestamoId == id);
+                encontrado = contexto.Prestamos.Any(e => e.PrestamoId == id);
             }
             catch (Exception)
             {
@@ -199,13 +197,13 @@ namespace Registro_prestamos.BLL
             return encontrado;
         }
 
-        public static List<Prestamo> GetPrestamo()
+        public static List<Prestamos> GetPrestamo()
         {
-            List<Prestamo> lista = new List<Prestamo>();
+            List<Prestamos> lista = new List<Prestamos>();
             Contexto contexto = new Contexto();
             try
             {
-                lista = contexto.Prestamo.ToList();
+                lista = contexto.Prestamos.ToList();
             }
             catch (Exception)
             {

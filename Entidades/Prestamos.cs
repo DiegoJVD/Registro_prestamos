@@ -1,11 +1,13 @@
-using System.ComponentModel.DataAnnotations;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Registro_prestamos.Entidades
 {
     
 
-public class Prestamo{
+public class Prestamos{
         [Key]
         public int PrestamoId { get; set; }
 
@@ -18,6 +20,9 @@ public class Prestamo{
         public decimal monto { get; set; }
 
         public decimal Balance { get; set; }
+
+        [ForeignKey("PrestamoId")]
+        public virtual List<MorasDetalle> Detalle { get; set; }
 
     }
 

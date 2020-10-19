@@ -14,11 +14,11 @@ namespace Registro_prestamos.UI.Registro
     public partial class rPersona : Window
     {
 
-        private Persona persona;
+        private Personas persona;
         public rPersona()
         {
             InitializeComponent();
-            persona = new Persona();
+            persona = new Personas();
             this.DataContext = this.persona;
         }
 
@@ -40,7 +40,7 @@ namespace Registro_prestamos.UI.Registro
 
         public void Limpiar()
         {
-            this.persona = new Persona();
+            this.persona = new Personas();
             this.DataContext = persona;
         }
 
@@ -56,7 +56,7 @@ namespace Registro_prestamos.UI.Registro
                 this.persona = found;
             else
             {
-                this.persona = new Persona();
+                this.persona = new Personas();
                 MessageBox.Show("No encontrado, por favor confirme que sea un id valido e intente de nuevo ","", MessageBoxButton.OK);
             }
 

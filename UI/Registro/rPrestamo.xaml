@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Registro_prestamos.UI.Registro"
         mc:Ignorable="d"
-        Title="Registro de Prestamo" Height="380" Width="390">
+        Title="Registro de Prestamo" Height="380" Width="390"
+        ResizeMode="NoResize">
     <Grid>
         <StackPanel Margin="10,0,0,0">
             <!--Prestamo id-->

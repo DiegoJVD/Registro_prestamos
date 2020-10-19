@@ -14,6 +14,8 @@
                 <MenuItem Header="Registrar">
                     <MenuItem x:Name = "rpersonaMenuItem" Header="Registrar Persona"  Click="rPersonaMenuItem_CLick"/>
                     <MenuItem x:Name = "rPrestamoMenuItem" Header="Registrar Prestamo" Click="rPrestamoMenuItem_CLick"/>
+                    <MenuItem x:Name = "rMorasMenuItem" Header="Registrar Mora" Click="rMoraMenuItem_CLick"/>
+                    
                 </MenuItem>
                 <MenuItem Header="Consultar">
                     <MenuItem x:Name = "cpersonaMenuItem" Header="Consular Persona"  Click="cPersonaMenuItem_CLick"/>

@@ -22,7 +22,7 @@ namespace Registro_prestamos.UI.Consulta
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-             var listado = new List<Prestamo>();
+             var listado = new List<Prestamos>();
 
             if (CriterioTextBox.Text.Trim().Length > 0)
             {
