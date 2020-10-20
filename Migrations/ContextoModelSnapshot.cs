@@ -89,6 +89,9 @@ namespace Registro_prestamos.Migrations
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
 
+                    b.Property<decimal>("Mora")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("PersonaId")
                         .HasColumnType("INTEGER");
 

@@ -161,18 +161,18 @@ namespace Registro_prestamos.BLL
         {
             List<Prestamos> lista = new List<Prestamos>();
             Contexto contexto = new Contexto();
-            try
-            {
+            // try
+            // {
                 lista = contexto.Prestamos.Where(criterio).AsNoTracking().ToList();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                contexto.Dispose();
-            }
+            // }
+            // catch (Exception)
+            // {
+            //     throw;
+            // }
+            // finally
+            // {
+            //     contexto.Dispose();
+            // }
             return lista;
         }
 

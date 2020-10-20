@@ -61,6 +61,8 @@
                 <TextBox x:Name="TotalTextBox" Width="108"  Height="25" Text="{Binding Total}"/>
              </StackPanel>
 
+             
+
              <!--botones Nuevo, guardar y eliminar -->
             <StackPanel Orientation = "Horizontal" Margin= "10,10,0,0">
                 <!--Nuevo-->

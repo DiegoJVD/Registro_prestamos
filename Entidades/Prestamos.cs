@@ -21,6 +21,12 @@ public class Prestamos{
 
         public decimal Balance { get; set; }
 
+        public decimal Mora {get; set; }
+
+        public Prestamos(){
+            Mora  = 0;
+        }
+
         [ForeignKey("PrestamoId")]
         public virtual List<MorasDetalle> Detalle { get; set; }
 

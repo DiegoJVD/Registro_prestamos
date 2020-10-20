@@ -25,6 +25,14 @@ namespace Registro_prestamos.BLL
                 contexto.Moras.Add(mora);
                 paso = contexto.SaveChanges() > 0;
 
+                List<MorasDetalle> detalles = mora.Detalle;
+
+                foreach(MorasDetalle m in detalles){
+                    Prestamos prestamo = PrestamoBLL.Buscar(m.PrestamoId);
+                    prestamo.Mora = m.Valor;
+                    PrestamoBLL.Guardar(prestamo);
+                }
+
             } catch{
                 throw;
             
@@ -86,10 +94,7 @@ namespace Registro_prestamos.BLL
             Moras mora;
 
             try{
-                mora = contexto.Moras
-                    .Include(m => m.Detalle)
-                    .Where(m => m.MoraId == id)
-                    .SingleOrDefault();
+                mora = contexto.Moras.Include(m => m.Detalle).Where(m => m.MoraId == id).SingleOrDefault();
                 
             } catch{
                 throw;

@@ -9,7 +9,7 @@ using Registro_prestamos.DAL;
 namespace Registro_prestamos.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20201019033455_Inicial")]
+    [Migration("20201019231706_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -89,6 +89,9 @@ namespace Registro_prestamos.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Fecha")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Mora")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("PersonaId")

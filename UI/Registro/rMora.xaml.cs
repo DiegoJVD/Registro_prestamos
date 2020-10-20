@@ -37,7 +37,7 @@ namespace Registro_prestamos.UI.Registro
 
         private bool ExisteDB()
         {
-            mora = MorasBLL.Buscar(Utilidades.ToInt(IdTextBox.Text));
+            mora = MorasBLL.Buscar(Convert.ToInt32(IdTextBox.Text));
 
             return (mora != null);
         }

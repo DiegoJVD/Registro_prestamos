@@ -45,7 +45,8 @@ namespace Registro_prestamos.Migrations
                     PersonaId = table.Column<int>(nullable: false),
                     Concepto = table.Column<string>(nullable: true),
                     monto = table.Column<decimal>(nullable: false),
-                    Balance = table.Column<decimal>(nullable: false)
+                    Balance = table.Column<decimal>(nullable: false),
+                    Mora = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
